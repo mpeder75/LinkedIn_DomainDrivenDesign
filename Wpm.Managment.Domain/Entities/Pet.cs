@@ -1,27 +1,56 @@
-﻿using Wpm.Managment.Domain.Base;
+﻿using System.Runtime.InteropServices;
+using Wpm.Managment.Domain.Base;
 using Wpm.Managment.Domain.ValueObjects;
 
 namespace Wpm.Managment.Domain.Entities;
 
-public class Pet : DomainEntity<Pet>
+public class Pet : DomainEntity
 {
-    public Name Name { get; init; }
-    public Age Age { get; init; }
-    public string Color { get; set; }
-    public decimal Weight { get; set; }
-    public SexOfPet SexOfPet { get; set; }
+    public string Name { get; init; }
+    public int Age { get; init; }
+    public string Color { get; init; }
+    public Weight Weight { get; private set; }
+    public SexOfPet SexOfPet { get; init; }
+    public WeightClass WeightClass { get; private set; }
 
-    public Pet(Name name, Age age)
-    {
-        Name = name;
-        Age = age;
-    }
+    public BreedId BreedId { get; init; }
 
+    // protected constructor til EF
+    protected Pet() { }
 
-    // Constructor for testing purposes
-    public Pet(Guid id, Name name, Age age) : this(name, age)
+    public Pet(Guid id, string name, int age, string color, SexOfPet sexOfPet, BreedId breedId)
     {
         Id = id;
+        Name = name;
+        Age = age;
+        Color = color;
+        SexOfPet = sexOfPet;
+        BreedId = breedId;
+    }
+
+    public void SetWeight(Weight weight, IBreedService breedService)
+    {
+        Weight = weight;
+        SetWeightClass(breedService);
+    }
+
+    public void SetWeightClass(IBreedService breedService)
+    {
+        var desiredBreed = breedService.GetBreed(BreedId.Value);
+
+        var (from, to) = SexOfPet switch
+        {
+            SexOfPet.Male => (desiredBreed.MaleIdealWeight.From, desiredBreed.MaleIdealWeight.To),
+            SexOfPet.Female => (desiredBreed.FemaleIdealWeight.From, desiredBreed.FemaleIdealWeight.To),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+        WeightClass = Weight.Value switch
+        {
+            _ when Weight.Value < from => WeightClass.Underweight,
+            _ when Weight.Value > from => WeightClass.Overweight,
+            _ => WeightClass.Ideal
+        };
     }
 }
 
@@ -29,4 +58,12 @@ public enum SexOfPet
 {
     Male,
     Female
+}
+
+public enum WeightClass
+{
+    Unknown,
+    Ideal,
+    Underweight,
+    Overweight
 }
