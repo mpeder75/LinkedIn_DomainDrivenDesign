@@ -1,5 +1,6 @@
 ﻿using Wpm.Managment.Domain.Entities;
 using Wpm.Managment.Domain.ValueObjects;
+using Wpm.SharedKernel;
 using Xunit;
 
 namespace Wpm.Managment.Domain.Tests;

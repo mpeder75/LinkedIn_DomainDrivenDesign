@@ -15,13 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinic.Domain.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinic.Api", "Wpm.Clinic.Api\Wpm.Clinic.Api.csproj", "{C9984193-7ABC-47B2-9C1F-08DB12D8BC42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.SharedKernel", "Wpm.SharedKernel\Wpm.SharedKernel.csproj", "{0C6BDDF1-6404-40CE-AB0E-1485B25FC766}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0DD685E6-F0C8-4062-A8F4-E5427BDE0DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +47,12 @@ Global
 		{C9984193-7ABC-47B2-9C1F-08DB12D8BC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9984193-7ABC-47B2-9C1F-08DB12D8BC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9984193-7ABC-47B2-9C1F-08DB12D8BC42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C6BDDF1-6404-40CE-AB0E-1485B25FC766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C6BDDF1-6404-40CE-AB0E-1485B25FC766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C6BDDF1-6404-40CE-AB0E-1485B25FC766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C6BDDF1-6404-40CE-AB0E-1485B25FC766}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

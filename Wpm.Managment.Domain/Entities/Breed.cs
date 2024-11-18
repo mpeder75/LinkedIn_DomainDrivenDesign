@@ -1,5 +1,5 @@
-﻿using Wpm.Managment.Domain.Base;
-using Wpm.Managment.Domain.ValueObjects;
+﻿using Wpm.Managment.Domain.ValueObjects;
+using Wpm.SharedKernel;
 
 namespace Wpm.Managment.Domain.Entities;
 

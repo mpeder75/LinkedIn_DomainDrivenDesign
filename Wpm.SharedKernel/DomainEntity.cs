@@ -1,6 +1,4 @@
-﻿using Wpm.Managment.Domain.Entities;
-
-namespace Wpm.Managment.Domain.Base
+﻿namespace Wpm.SharedKernel
 {
     public abstract class DomainEntity
     {

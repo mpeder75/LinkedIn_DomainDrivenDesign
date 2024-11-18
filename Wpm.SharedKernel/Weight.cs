@@ -1,4 +1,4 @@
-﻿namespace Wpm.Managment.Domain.ValueObjects;
+﻿namespace Wpm.SharedKernel;
 
 // Value object - oprettes som record (som er immutable)
 public record Weight
