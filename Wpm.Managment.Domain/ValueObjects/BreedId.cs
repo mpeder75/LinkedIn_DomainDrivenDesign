@@ -2,10 +2,15 @@
 
 public record BreedId
 {
-    public Guid Value { get; set; }
-    public IBreedService BreedService { get; set; }
+   public IBreedService BreedService { get; set; }
+   public Guid Value { get; set; }
 
-    public BreedId(Guid value, IBreedService breedService)
+   public BreedId(Guid value)
+   {
+       Value = value;
+   }
+
+   public BreedId(Guid value, IBreedService breedService)
     {
         BreedService = breedService;
 
@@ -13,6 +18,12 @@ public record BreedId
 
         Value = value;
     }
+    
+    public static BreedId Create(Guid value)
+    {
+        return new BreedId(value);
+    }
+
 
     // Valider om Breed er valid
     private void ValidateBreed(Guid value)
