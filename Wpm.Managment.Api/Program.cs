@@ -6,11 +6,12 @@ using Wpm.Managment.Domain;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//builder.Services.AddScoped<IManagmentService, ManagmentService>();
+builder.Services.AddScoped<IBreedService, BreedService>();
 builder.Services.AddScoped<IManagmentRepository, ManagmentRepository>();
 builder.Services.AddDbContext<ManagementDbContext>(options =>
 {
